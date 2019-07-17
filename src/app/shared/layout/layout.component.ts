@@ -1,0 +1,22 @@
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+
+@Component({
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.css']
+})
+export class LayoutComponent implements OnInit {
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+
+  }
+  public isLoginRoute() {
+    if(this.router.url == "/login"){
+      return false;
+    }
+    return true;
+  }
+}
