@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  php_url: "https://idontknow.com"
 };

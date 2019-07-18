@@ -2,7 +2,7 @@
 <!-- Document Wrapper   ============================================= -->
 <div id="main-wrapper" [ngClass]="isLoginRoute() ? 'h-100' : ''">
    <app-header *ngIf="isLoginRoute()"></app-header>
-   
+
    <ng-content></ng-content>
 
    <app-footer *ngIf="isLoginRoute()"></app-footer>

@@ -1,4 +1,6 @@
+import { AuthService } from './../../common/service/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -8,7 +10,15 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public _auth: AuthService,
+    private _router: Router
+  ) { }
+
+  signOut(){
+    this._auth.logout();
+    this._router.navigate(['/login']);
+  }
 
   ngOnInit() {
     // Dropdown show on hover

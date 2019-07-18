@@ -1,0 +1,8 @@
+{
+   "/php/*":{
+      "target": "http://localhost/bank/bank-app",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+   }
+}

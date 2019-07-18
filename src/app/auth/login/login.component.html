@@ -1,32 +1,45 @@
 <div id="main-wrapper" class="h-100">
-      <div class="container h-100">
-        <!-- Login Form
+  <div class="container h-100">
+    <!-- Login Form
         ============================================= -->
-        <div class="row no-gutters h-100 mt-5">
-          <div class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4 m-auto">
-            <div class="logo mb-4 text-center"> 
-               <a routerLink="/" title="">
-                  <img src="assets/images/logo.png" alt="">
-               </a> 
-            </div>
-            <form id="loginForm" method="post">
-              <div class="vertical-input-group">
-                <div class="input-group">
-                  <input type="email" class="form-control" id="emailAddress" required placeholder="Your Email">
-                </div>
-                <div class="input-group">
-                  <input type="password" class="form-control" id="loginPassword" required placeholder="Password">
-                </div>
-              </div>
-              <button class="btn btn-primary btn-block shadow-none my-4" type="submit">Login</button>
-            </form>
-            <!-- <p class="text-3 text-center text-muted">Don't have an account? <a class="btn-link" href="signup-2.html">Sign Up</a></p> -->
-            <p class="text-center"><a class="btn-link" routerLink="/">Home?</a></p>
-          </div>
-          <div class="col-12 fixed-bottom">
-            <p class="text-center text-1 text-muted mb-1">Copyright © 2019 <a href="#">Home</a>. All Rights Reserved.</p>
-          </div>
+    <div class="row no-gutters h-100 mt-5">
+      <div class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4 m-auto">
+        <div class="logo mb-4 text-center">
+          <a routerLink="/" title="">
+            <img src="assets/images/logo.png" alt="">
+          </a>
         </div>
-        <!-- Login Form End -->
+        <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="error-section">
+            <div class="alert alert-danger" *ngIf="error">Invalid Login</div>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div class="danger-text" *ngIf="email.errors.required">Email is required</div>
+              <div class="danger-text" *ngIf="email.errors.email">Please enter a valid email address</div>
+            </div>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)">
+              <div class="danger-text" *ngIf="password.errors.required">Password is required</div>
+            </div>
+          </div>
+
+          <div class="vertical-input-group">
+            <div class="input-group">
+              <input type="email" class="form-control" id="emailAddress" formControlName="email"
+                placeholder="Your Email">
+            </div>
+            <div class="input-group">
+              <input type="password" class="form-control" id="loginPassword" formControlName="password"
+                placeholder="Password">
+            </div>
+          </div>
+          <button [disabled]="!loginForm.valid" class="btn btn-primary btn-block shadow-none my-4" type="submit">Login</button>
+        </form>
+        <!-- <p class="text-3 text-center text-muted">Don't have an account? <a class="btn-link" href="signup-2.html">Sign Up</a></p> -->
+        <p class="text-center"><a class="btn-link" routerLink="/">Home?</a></p>
+      </div>
+      <div class="col-12 fixed-bottom">
+        <p class="text-center text-1 text-muted mb-1">Copyright © 2019 <a href="#">Home</a>. All Rights Reserved.</p>
       </div>
     </div>
+    <!-- Login Form End -->
+  </div>
+</div>
